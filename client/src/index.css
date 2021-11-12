@@ -124,6 +124,7 @@ form .form-inner a{
  margin-left: 10px;
   color: rgba(94, 4, 155, 0.959);
 cursor: pointer;
+text-decoration: none;
 }
 
 form .form-inner a:hover{
