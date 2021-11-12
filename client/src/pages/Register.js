@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios"
 
-const LoginForm = ({ Login, error }) => {
+const RegisterForm = ({ Login, error }) => {
     const [details, setDetails] = useState({ name: "", email: "", password: "" })
     const submitHandler = async e => {
         e.preventDefault();
@@ -12,7 +12,7 @@ const LoginForm = ({ Login, error }) => {
         }
         Login(details)
         try {
-            const { data } = await axios.post('/auth/login', userData)
+            const { data } = await axios.post('/auth/register', userData)
             console.log(data);
         } catch (error) {
             console.log(error.message);
@@ -21,7 +21,11 @@ const LoginForm = ({ Login, error }) => {
     return (
         <form onSubmit={submitHandler}>
             <div className="form-inner">
-                <h2>Login</h2>
+                <h2>Register</h2>
+                <div className="form-group">
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" name="name" id="name" onChange={e => setDetails({ ...details, name: e.target.value })} value={details.name} />
+                </div>
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
                     <input type="email" name="email" id="email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
@@ -31,11 +35,11 @@ const LoginForm = ({ Login, error }) => {
                     <input type="password" name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
                 </div>
                 <input type="submit" value="LOGIN" />
-                <a href="/register">Don't have an account?</a>
+                <a>Already have an account?</a>
                 {(error != "") ? (<div className="error">{error}</div>) : ""}
             </div>
         </form >
     )
 }
 
-export default LoginForm
+export default RegisterForm
