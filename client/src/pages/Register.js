@@ -3,16 +3,17 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 
 
-const RegisterForm = ({ Login, error }) => {
+const RegisterForm = ({ error }) => {
     const [details, setDetails] = useState({ name: "", email: "", password: "" })
-    const submitHandler = async e => {
-        e.preventDefault();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        console.log(details);
         const userData = {
             name: details.name,
             email: details.email,
             password: details.password
         }
-        Login(details)
         try {
             const { data } = await axios.post('/auth/register', userData)
             console.log(data);
@@ -20,8 +21,9 @@ const RegisterForm = ({ Login, error }) => {
             console.log(error.message);
         }
     }
+
     return (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={handleSubmit}>
             <div className='App'>
                 <div className="form-inner">
                     <h2>Register</h2>
@@ -37,7 +39,7 @@ const RegisterForm = ({ Login, error }) => {
                         <label htmlFor="password">Password:</label>
                         <input type="password" name="password" id="password" onChange={e => setDetails({ ...details, password: e.target.value })} value={details.password} />
                     </div>
-                    <input type="submit" value="SIGNUP" />
+                    <input type="submit" value="REGISTER" />
                     <Link to="/login" >Already have an account?</Link>
                     {/* <a >Already have an account?</a> */}
                     {(error != "") ? (<div className="error">{error}</div>) : ""}

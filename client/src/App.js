@@ -4,12 +4,16 @@ import { Routes, Route } from 'react-router-dom'
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 
+
+
+
 const App = () => {
 
   return (
     <Routes>
-      <Route exact path="/login" element={<Login />} />
       <Route exact path="/" element={<Register />} />
+      <Route exact path="/login" element={<Login />} />
+
     </Routes>
   )
 }

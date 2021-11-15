@@ -3,16 +3,15 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 
 
-const LoginForm = ({ Login, error }) => {
-    const [details, setDetails] = useState({ name: "", email: "", password: "" })
-    const submitHandler = async e => {
+const LoginForm = ({ LoginDetails, error }) => {
+    const [details, setDetails] = useState({ email: "", password: "" })
+    const Login = async (e) => {
         e.preventDefault();
         const userData = {
-            name: details.name,
             email: details.email,
             password: details.password
         }
-        Login(details)
+
         try {
             const { data } = await axios.post('/auth/login', userData)
             console.log(data);
@@ -22,7 +21,7 @@ const LoginForm = ({ Login, error }) => {
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <form >
             <div className='App'>
                 <div className="form-inner">
                     <h2>Login</h2>
