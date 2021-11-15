@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios"
-import { Link } from "react-router-dom"
-
+import { Link, useNavigate } from "react-router-dom"
 
 const RegisterForm = ({ error }) => {
-    const [details, setDetails] = useState({ name: "", email: "", password: "" })
 
+    const [details, setDetails] = useState({ name: "", email: "", password: "" })
+    const [err, setErr] = useState('')
+    const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(details);
@@ -17,8 +18,11 @@ const RegisterForm = ({ error }) => {
         try {
             const { data } = await axios.post('/auth/register', userData)
             console.log(data);
+            if (data) {
+                navigate('/login')
+            }
         } catch (error) {
-            console.log(error.message);
+            setErr(error.response.data.message)
         }
     }
 
@@ -42,7 +46,7 @@ const RegisterForm = ({ error }) => {
                     <input type="submit" value="REGISTER" />
                     <Link to="/login" >Already have an account?</Link>
                     {/* <a >Already have an account?</a> */}
-                    {(error != "") ? (<div className="error">{error}</div>) : ""}
+                    {(err != "") ? (<div className="error">{err}</div>) : ""}
                 </div>
             </div>
         </form >

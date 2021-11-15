@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
-const LoginForm = ({ LoginDetails, error }) => {
+const LoginForm = ({ error }) => {
     const [details, setDetails] = useState({ email: "", password: "" })
-    const Login = async (e) => {
+    const [err, setErr] = useState('')
+    const navigate = useNavigate()
+    const handleLogin = async (e) => {
         e.preventDefault();
         const userData = {
             email: details.email,
@@ -13,15 +15,17 @@ const LoginForm = ({ LoginDetails, error }) => {
         }
 
         try {
-            const { data } = await axios.post('/auth/login', userData)
-            console.log(data);
+            const { data } = await axios.post('/auth/login', userData);
+            if (data) {
+                navigate('/home')
+            }
         } catch (error) {
-            console.log(error.message);
+            setErr(error.response.data.message)
         }
     }
 
     return (
-        <form >
+        <form onSubmit={handleLogin}>
             <div className='App'>
                 <div className="form-inner">
                     <h2>Login</h2>
@@ -35,7 +39,7 @@ const LoginForm = ({ LoginDetails, error }) => {
                     </div>
                     <input type="submit" value="LOGIN" />
                     <Link to="/" >Don't have an account?</Link>
-                    {(error != "") ? (<div className="error">{error}</div>) : ""}
+                    {(err != "") ? (<div className="error">{err}</div>) : ""}
                 </div>
             </div>
         </form >
