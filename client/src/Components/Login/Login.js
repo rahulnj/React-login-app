@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
+import './Login.css';
 
 
-const LoginForm = ({ error }) => {
+function Login() {
     const [details, setDetails] = useState({ email: "", password: "" })
     const [err, setErr] = useState('')
     const navigate = useNavigate()
@@ -20,13 +21,16 @@ const LoginForm = ({ error }) => {
                 navigate('/home')
             }
         } catch (error) {
+            console.log(error);
             setErr(error.response.data.message)
         }
     }
 
+
     return (
+
         <form onSubmit={handleLogin}>
-            <div className='App'>
+            <div className='form-container'>
                 <div className="form-inner">
                     <h2>Login</h2>
                     <div className="form-group">
@@ -43,8 +47,8 @@ const LoginForm = ({ error }) => {
                 </div>
             </div>
         </form >
+
     )
 }
 
-
-export default LoginForm
+export default Login
