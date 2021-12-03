@@ -39,7 +39,7 @@ const LoginForm = ({ error }) => {
                     </div>
                     <input type="submit" value="LOGIN" />
                     <Link to="/" >Don't have an account?</Link>
-                    {(err != "") ? (<div className="error">{err}</div>) : ""}
+                    {(err !== "") ? (<div className="error">{err}</div>) : ""}
                 </div>
             </div>
         </form >
