@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Routes, Route } from 'react-router-dom'
 
-import Register from "./Pages/Register";
+import Register from "./Pages/RegisterPage";
 import LoginPage from "./Pages/LoginPage";
 import Home from "./Pages/Home"
 
