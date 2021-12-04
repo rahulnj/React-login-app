@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios"
 
-function home() {
+import './Home.css';
+
+function Home() {
     const logoutHandler = async () => {
 
 
@@ -15,4 +17,4 @@ function home() {
     )
 }
 
-export default home
+export default Home

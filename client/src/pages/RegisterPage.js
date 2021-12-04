@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Signup from "../Components/Signup/Signup";
 
-const RegisterForm = ({ error }) => {
+const RegisterPage = ({ error }) => {
 
 
     return (
@@ -11,4 +11,4 @@ const RegisterForm = ({ error }) => {
     )
 }
 
-export default RegisterForm
+export default RegisterPage
