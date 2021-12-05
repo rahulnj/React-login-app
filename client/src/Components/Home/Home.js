@@ -14,13 +14,14 @@ function Home() {
         const data = await axios.get('/auth/logout')
         console.log(data);
         if (data) {
+            localStorage.removeItem('user');
             navigate('/login')
         }
     }
 
     return (
         <div className="welcome">
-            <h2>Hi, <span>hi</span></h2>
+            <h2>Hi, <span>{loggedIn.name}</span></h2>
             <button onClick={logoutHandler} >Logout</button>
         </div>
     )

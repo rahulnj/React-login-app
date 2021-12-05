@@ -1,17 +1,38 @@
 import React, { useState, createContext, useEffect } from 'react'
-import axios from "axios"
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 
-    const [loggedIn, setLoggedIn] = useState(undefined)
-    const getLoggedIn = async () => {
-        const { resData } = await axios.post('/auth/login');
-        setLoggedIn(resData)
-    }
+    const [loggedIn, setLoggedIn] = useState('')
+    // console.log(loggedIn);
+    //run once
     useEffect(() => {
-        getLoggedIn()
+        getUserData()
     }, [])
+
+
+    useEffect(() => {
+        saveUserDatatoLocal()
+    }, [loggedIn])
+
+
+
+    const saveUserDatatoLocal = () => {
+        localStorage.setItem("user", JSON.stringify(loggedIn))
+    }
+    const getUserData = () => {
+        if (localStorage.getItem('user') === null) {
+            localStorage.setItem('user', JSON.stringify([]))
+        } else {
+            let LocalUser = JSON.parse(localStorage.getItem('user'));
+            console.log(LocalUser);
+            setLoggedIn(LocalUser);
+        }
+
+    }
+
+
+
 
 
 
