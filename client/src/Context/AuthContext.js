@@ -4,18 +4,15 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
 
     const [loggedIn, setLoggedIn] = useState('')
-    // console.log(loggedIn);
-    //run once
+
+    //run once when reload
     useEffect(() => {
         getUserData()
     }, [])
 
-
     useEffect(() => {
         saveUserDatatoLocal()
     }, [loggedIn])
-
-
 
     const saveUserDatatoLocal = () => {
         localStorage.setItem("user", JSON.stringify(loggedIn))
@@ -30,11 +27,6 @@ export const AuthContextProvider = ({ children }) => {
         }
 
     }
-
-
-
-
-
 
     return (
         <AuthContext.Provider value={{ loggedIn, setLoggedIn }}>

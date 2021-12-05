@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import axios from "axios"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import './Home.css';
 import { AuthContext } from "../../Context/AuthContext";
 
 function Home() {
     const { loggedIn } = useContext(AuthContext)
+
     console.log(loggedIn);
 
     const navigate = useNavigate()
@@ -22,7 +23,7 @@ function Home() {
     return (
         <div className="welcome">
             <h2>Hi, <span>{loggedIn.name}</span></h2>
-            <button onClick={logoutHandler} >Logout</button>
+            {loggedIn ? <button onClick={logoutHandler} >Logout</button> : ''}
         </div>
     )
 }
