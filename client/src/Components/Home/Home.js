@@ -6,7 +6,7 @@ import './Home.css';
 import { AuthContext } from "../../Context/AuthContext";
 
 function Home() {
-    const { loggedIn } = useContext(AuthContext)
+    const { loggedIn, setLoggedIn } = useContext(AuthContext)
 
     console.log(loggedIn);
 
@@ -16,7 +16,8 @@ function Home() {
         console.log(data);
         if (data) {
             localStorage.removeItem('user');
-            navigate('/login')
+            setLoggedIn('')
+            navigate('/home')
         }
     }
 
