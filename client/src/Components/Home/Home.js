@@ -8,7 +8,6 @@ import { AuthContext } from "../../Context/AuthContext";
 function Home() {
     const { loggedIn, setLoggedIn } = useContext(AuthContext)
 
-    console.log(loggedIn);
 
     const navigate = useNavigate()
     const logoutHandler = async () => {
