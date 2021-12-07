@@ -12,6 +12,7 @@ function Login({ name }) {
 
     const [details, setDetails] = useState({ email: "", password: "" })
     const [userData, setUserData] = useState('')
+    const [admin, setAdmin] = useState('')
     const [err, setErr] = useState('')
     const navigate = useNavigate()
     const handleLogin = async (e) => {
@@ -23,10 +24,13 @@ function Login({ name }) {
 
         try {
             const { data } = await axios.post('/auth/login', userData);
-            if (data) {
+            if (data && !data.isAdmin) {
                 setUserData(data)
                 setLoggedIn(data)
                 navigate('/home')
+            } else if (data && data.isAdmin) {
+                setAdmin(data)
+                console.log("admin", data);
             }
         } catch (error) {
             console.log(error);
