@@ -4,8 +4,8 @@ import { Routes, Route } from 'react-router-dom'
 import Register from "./Pages/RegisterPage";
 import Login from "./Pages/LoginPage";
 import Home from "./Pages/HomePage"
-import Admin from "./Pages/AdminLogin"
-import AdminHome from "./Pages/AdminHome"
+import Admin from "./Pages/AdminLoginPage"
+import AdminHome from "./Pages/AdminHomePage"
 import { AuthContextProvider } from "./Context/AuthContext";
 
 
