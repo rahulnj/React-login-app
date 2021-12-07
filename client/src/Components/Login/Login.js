@@ -5,7 +5,7 @@ import './Login.css';
 import { AuthContext } from "../../Context/AuthContext";
 
 
-function Login() {
+function Login({ name }) {
 
     const { loggedIn, setLoggedIn } = useContext(AuthContext)
 
@@ -40,7 +40,7 @@ function Login() {
         <form onSubmit={handleLogin}>
             <div className='form-container'>
                 <div className="form-inner">
-                    <h2>Login</h2>
+                    <h2>{name}</h2>
                     <div className="form-group">
                         <label htmlFor="email">Email:</label>
                         <input type="email" name="email" id="email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
