@@ -5,6 +5,7 @@ import Register from "./Pages/RegisterPage";
 import Login from "./Pages/LoginPage";
 import Home from "./Pages/HomePage"
 import Admin from "./Pages/AdminLogin"
+import AdminHome from "./Pages/AdminHome"
 import { AuthContextProvider } from "./Context/AuthContext";
 
 
@@ -17,6 +18,8 @@ const App = () => {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/admin" element={<Admin />} />
+        <Route exact path="/adminhome" element={<AdminHome />} />
+
       </Routes>
     </AuthContextProvider>
   )
