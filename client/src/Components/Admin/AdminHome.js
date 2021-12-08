@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom"
 import './AdminHome.css';
 import { AuthContext } from "../../Context/AuthContext";
 
-function Admin() {
+function AdminHome() {
     return (
         <div>
-
+            <h1>hai</h1>
         </div>
     )
 }
 
-export default Admin
+export default AdminHome

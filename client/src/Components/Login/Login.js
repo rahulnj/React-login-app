@@ -30,6 +30,7 @@ function Login() {
                 navigate('/home')
             } else if (data && data.isAdmin) {
                 setAdmin(data)
+                navigate('/adminhome')
                 console.log("admin", data);
             }
         } catch (error) {
